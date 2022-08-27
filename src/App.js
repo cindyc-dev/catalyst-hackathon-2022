@@ -10,8 +10,9 @@ import ImageUpload from "./components/ImageUpload";
 import TabBody from "./TabBody";
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
-import { Button } from "@mui/material";
+
 import { Login } from "./firebase";
+import LoginButton from "./components/LoginButton";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -72,12 +73,8 @@ const HomePage = () => {
                     />
                 </TabPanel>
                 <TabPanel value={tabVal} index={1}>
-                    <Button
-                        variant="contained"
-                        onClick={() => Login("facebook")}
-                    >
-                        Login
-                    </Button>
+                    <LoginButton handleClick={() => Login("facebook")} /> 
+                    
                     <TabBody images={images} />
                 </TabPanel>
                 <TabPanel value={tabVal} index={2}>
