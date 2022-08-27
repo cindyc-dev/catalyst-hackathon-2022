@@ -5,10 +5,14 @@ import ImageUploading from 'react-images-uploading';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 import TopBar from './components/TopBar';
-import { Button } from '@mui/material';
+import { Button, ImageListItemBar, Link } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Login } from './firebase';
+import IconButton from '@mui/material/IconButton';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -40,7 +44,6 @@ TabPanel.propTypes = {
 function App() {
   const [tabVal, setTabVal] = useState(0);
   const [tabDisable, setTabDisable] = useState(true);
-
   const [images, setImages] = useState([]);
   const maxNumber = 69;
 
@@ -82,41 +85,87 @@ function App() {
             isDragging,
             dragProps,
           }) => (
-            // write your building UI
-            <div className="upload__image-wrapper">
-              <Button
-                variant="contained"
-                style={isDragging ? { color: 'red' } : undefined}
-                onClick={onImageUpload}
+            <Box>
+              {
+              <Box sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'flex-end',
+                p: 1,
+                m: 1,
+                gap: 1,
+              }}>
+                <Button
+                  variant="contained"
+                  startIcon={<FileUploadIcon />}
+                  onClick={onImageUpload}
+                >
+                  Upload
+                </Button>
+                <Button
+                  variant="contained"
+                  color="error"
+                  startIcon={<DeleteIcon />}
+                  onClick={onImageRemoveAll}
+                >
+                  Remove all
+                </Button>
+              </Box>}
+              <Box height="80vh"
+                display="flex" 
+                // style={{
+                //   border: imageList.length === 0 || isDragging ? "0.3em dashed grey" : null }}
                 {...dragProps}
               >
-                Click or Drop here
-              </Button>
+                {/* <Button
+                  variant="contained"
+                  startIcon={<FileUploadIcon />}
+                  onClick={onImageUpload}
+                >
+                  Upload
+                </Button> */}
+                {/* {imageList.length === 0 &&
+                  <Box m="auto">
+                    <IconButton
+                      sx={{ color: 'white' }}
+                      aria-label={`delete`}
+                      onClick={onImageUpload}
+                    >
+                    <FileUploadIcon />
+                    </IconButton>
+                    <Typography>Drag files here or <Link onClick={onImageUpload}>browse</Link></Typography>
+                  </Box>
+                } */}
+                &nbsp;
 
-              &nbsp;
-
-              <Button
-                variant="contained"
-                color="error"
-                startIcon={<DeleteIcon />}
-                onClick={onImageRemoveAll}
-              >
-                Remove all images
-              </Button>
-
-              {imageList.map((image, index) => (
-                <div key={index} className="image-item">
-                  <img src={image['data_url']} alt="" width="100" />
-                  <div className="image-item__btn-wrapper">
-                    <button onClick={() => onImageUpdate(index)}>Update</button>
-                    <button onClick={() => onImageRemove(index)}>Remove</button>
-                  </div>
-                </div>
-              ))}
-            </div>
+                
+                <ImageList variant="masonry" cols={3} gap={8}>
+                {imageList.map((image, index) => (
+                  <ImageListItem key={index}>
+                    <img src={image['data_url']} alt="" loading="lazy" />
+                    {
+                    <ImageListItemBar
+                      position="bottom"
+                      actionIcon={
+                      <IconButton
+                        sx={{ color: 'white' }}
+                        aria-label={`delete`}
+                        onClick={() => onImageRemove(index)}
+                      >
+                        <DeleteIcon/>
+                      </IconButton>}
+                      actionPosition="right"
+                    />
+                    }
+                  </ImageListItem>
+                ))}
+                </ImageList>
+              </Box>
+            </Box>
           )}
         </ImageUploading>
       </TabPanel>
+
       <TabPanel value={tabVal} index={1}>
         Item Two
       </TabPanel>
