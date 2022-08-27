@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 // Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { FacebookLogin } from "./LoginProvider";
+import { FacebookLogin, TwitterLogin } from "./LoginProvider";
 import { LinkToFacebook, LinkToTwitter } from "./LinkAccounts";
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,6 +21,9 @@ export const Login = (method) => {
   switch (method) {
     case 'facebook':
       FacebookLogin();
+      break;
+    case 'twitter':
+      TwitterLogin();
       break;
     default:
       return;

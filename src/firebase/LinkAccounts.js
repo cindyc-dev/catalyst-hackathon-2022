@@ -7,7 +7,7 @@ const twitterProvider = new TwitterAuthProvider();
 facebookProvider.addScope('pages_manage_posts');
 facebookProvider.addScope('pages_read_engagement');
 
-export const linkToFacebook = () => {
+export const LinkToFacebook = () => {
   const auth = app.getAuth();
   app.linkWithPopup(auth.currentUser, facebookProvider).then((result) => {
     // Accounts successfully linked.
@@ -21,7 +21,7 @@ export const linkToFacebook = () => {
   });
 }
 
-export const linkToTwitter = () => {
+export const LinkToTwitter = () => {
   const auth = app.getAuth();
   app.linkWithPopup(auth.currentUser, twitterProvider).then((result) => {
     // Accounts successfully linked.
