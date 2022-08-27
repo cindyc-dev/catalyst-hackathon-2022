@@ -1,28 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
 
 export default function LoginPage() {
     return (
         <div className="login">
-            <Grid container spacing={2}>
+            <Grid container>
                     <Grid item xs={6}></Grid>
         
-                    <Grid item xs={6}>
+                    <Grid className="loginContent" item xs={6}>
                         <h2>Welcome Back!</h2>
                         <form action="/home">
                             <p>
-                                <label>Username:</label><br/>
-                                <input type="text" name="first_name" required />
+                                <label className="username">Username:</label><br/>
+                                <input type="text" name="username" required />
                             </p>
                             <p>
-                                <label>Password:</label>
+                                <label className="password">Password:</label>
                                 {/* <Link to="/forget-password"><label className="right-label">Forget password?</label></Link> */}
                                 <br/>
                                 <input type="password" name="password" required />
                             </p>
                             <p>
-                                <button id="sub_btn" type="submit">Login</button>
+                                <button className="buttonfront" id="sub_btn" type="submit">Login</button>
                             </p>
                         </form>
                         <footer>

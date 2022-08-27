@@ -14,7 +14,7 @@ export default function SignUpPage() {
                         <form action="/home">
                             <p>
                                 <label>Full Name:</label><br/>
-                                <input type="text" name="first_name" required />
+                                <input type="text" name="full_name" required />
                             </p>
                             <p>
                                 <label>Username:</label><br/>
