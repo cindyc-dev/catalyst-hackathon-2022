@@ -36,13 +36,10 @@ export default function LoginPage() {
                                 <Button className="buttonlogin" variant="contained" id="/" type="submit">Login</Button>
                                 <p></p>
                                 <Button className="buttonlogin" onClick={() => Login('facebook')}>Login with Facebook</Button> 
-                                <Button className="buttonlogin" onClick={() => Login('twitter')}>Login with Twitter</Button>                                         
+                                <Button className="buttonlogin" onClick={() => Login('twitter')}>Login with Twitter</Button> 
+                                <p className="linktoSignUp">Don't have an account? <Link to="/signup">Register</Link></p>                                        
                             </div>
                         </form>
-                        <footer>
-                            {/* <p>First time? <Link to="/register">Create an account</Link>.</p> */}
-                            {/* <p><Link to="/">Back to Homepage</Link>.</p> */}
-                        </footer>
                 </Grid>
             </Grid>
         </div>
