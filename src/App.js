@@ -3,10 +3,10 @@ import './App.css';
 import React from 'react';
 import ImageUploading from 'react-images-uploading';
 import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import TopBar from './components/TopBar';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -34,12 +34,7 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
+
 
 function App() {
   const [tabVal, setTabVal] = React.useState(0);
@@ -56,15 +51,48 @@ function App() {
 
   return (
     <div className="App">
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={tabVal} onChange={(e, newVal) => setTabVal(newVal)} aria-label="basic tabs example">
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-        </Tabs>
-      </Box>
+      <TopBar tabVal={tabVal} setTabVal={setTabVal} />
+
       <TabPanel value={tabVal} index={0}>
-        Item One
+        <ImageUploading
+          multiple
+          value={images}
+          onChange={onChange}
+          maxNumber={maxNumber}
+          dataURLKey="data_url"
+        >
+          {({
+            imageList,
+            onImageUpload,
+            onImageRemoveAll,
+            onImageUpdate,
+            onImageRemove,
+            isDragging,
+            dragProps,
+          }) => (
+            // write your building UI
+            <div className="upload__image-wrapper">
+              <button
+                style={isDragging ? { color: 'red' } : undefined}
+                onClick={onImageUpload}
+                {...dragProps}
+              >
+                Click or Drop here
+              </button>
+              &nbsp;
+              <button onClick={onImageRemoveAll}>Remove all images</button>
+              {imageList.map((image, index) => (
+                <div key={index} className="image-item">
+                  <img src={image['data_url']} alt="" width="100" />
+                  <div className="image-item__btn-wrapper">
+                    <button onClick={() => onImageUpdate(index)}>Update</button>
+                    <button onClick={() => onImageRemove(index)}>Remove</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </ImageUploading>
       </TabPanel>
       <TabPanel value={tabVal} index={1}>
         Item Two
@@ -72,47 +100,6 @@ function App() {
       <TabPanel value={tabVal} index={2}>
         Item Three
       </TabPanel>
-
-      <ImageUploading
-        multiple
-        value={images}
-        onChange={onChange}
-        maxNumber={maxNumber}
-        dataURLKey="data_url"
-      >
-        {({
-          imageList,
-          onImageUpload,
-          onImageRemoveAll,
-          onImageUpdate,
-          onImageRemove,
-          isDragging,
-          dragProps,
-        }) => (
-          // write your building UI
-          <div className="upload__image-wrapper">
-            <button
-              style={isDragging ? { color: 'red' } : undefined}
-              onClick={onImageUpload}
-              {...dragProps}
-            >
-              Click or Drop here
-            </button>
-            &nbsp;
-            <button onClick={onImageRemoveAll}>Remove all images</button>
-            {imageList.map((image, index) => (
-              <div key={index} className="image-item">
-                <img src={image['data_url']} alt="" width="100" />
-                <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageUpdate(index)}>Update</button>
-                  <button onClick={() => onImageRemove(index)}>Remove</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </ImageUploading>
-
     </div>
   );
 }
