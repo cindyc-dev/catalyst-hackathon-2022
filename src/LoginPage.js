@@ -9,9 +9,9 @@ export default function LoginPage() {
     return (
         <div className="login">
             <Grid container>
-                    <Grid item xs={6}></Grid>
+                    <Grid item xs={5.3}></Grid>
         
-                    <Grid className="loginContent" item xs={6}>
+                    <Grid className="loginContent" item xs={6.2}>
                         <h2>Welcome Back!</h2>
                         <form action="/home">
                             <p>
