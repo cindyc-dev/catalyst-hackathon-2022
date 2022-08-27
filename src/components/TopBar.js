@@ -34,24 +34,33 @@ function TopBar({ tabVal, setTabVal, tabDisable }) {
                     aria-label="basic tabs example"
                 >
                     <Tab label="Upload" {...a11yProps(0)} />
-                    <Tooltip title="Please upload an image first">
-                        <span>
-                            <Tab
-                                label="Facebook (Meta)"
-                                {...a11yProps(1)}
-                                disabled={tabDisable}
-                            />
-                        </span>
-                    </Tooltip>
-                    <Tooltip title="Please upload an image first">
-                        <span>
-                            <Tab
-                                label="Twitter"
-                                {...a11yProps(2)}
-                                disabled={tabDisable}
-                            />
-                        </span>
-                    </Tooltip>
+                    {tabDisable ? 
+                     <>
+                        <Tooltip title="Please upload an image first">
+                            <span>
+                                <Tab
+                                    label="Facebook (Meta)"
+                                    {...a11yProps(1)}
+                                    disabled
+                                />
+                            </span>
+                        </Tooltip>
+                        <Tooltip title="Please upload an image first">
+                            <span>
+                                <Tab
+                                    label="Twitter"
+                                    {...a11yProps(2)}
+                                    disabled
+                                />
+                            </span>
+                        </Tooltip>
+                     </>
+                     :
+                     <>
+                        <Tab label="Facebook (Meta)" {...a11yProps(1)} />
+                        <Tab label="Twitter" {...a11yProps(2)} />
+                    </>
+                     }
                 </Tabs>
             </Box>
             <Box>
