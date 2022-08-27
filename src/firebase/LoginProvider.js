@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider, signOut } from "firebase/auth";
 
 const facebookProvider = new FacebookAuthProvider();
 const twitterProvider = new TwitterAuthProvider();
@@ -6,9 +6,9 @@ const twitterProvider = new TwitterAuthProvider();
 facebookProvider.addScope('pages_manage_posts');
 facebookProvider.addScope('pages_read_engagement');
 
-export const FacebookLogin = () => {
+export const FacebookLogin = async () => {
   const auth = getAuth();
-  signInWithPopup(auth, facebookProvider)
+  return await signInWithPopup(auth, facebookProvider)
     .then((result) => {
       // The signed-in user info.
       const user = result.user;
@@ -16,7 +16,6 @@ export const FacebookLogin = () => {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const accessToken = credential.accessToken;
-
       return { error: false, user, accessToken };
     })
     .catch((error) => {
@@ -32,9 +31,9 @@ export const FacebookLogin = () => {
     });
 }
 
-export const TwitterLogin = () => {
+export const TwitterLogin = async () => {
   const auth = getAuth();
-  signInWithPopup(auth, twitterProvider)
+  return await signInWithPopup(auth, twitterProvider)
     .then((result) => {
       // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
       // You can use these server side with your app's credentials to access the Twitter API.
@@ -56,3 +55,14 @@ export const TwitterLogin = () => {
       return { error: true, errorCode, errorMessage, email, credential };
     });
 }
+
+export const SignOut = async () => {
+  const auth = getAuth();
+  return await signOut(auth).then(() => {
+    return { code: 200 };
+  }).catch((error) => {
+    // An error happened.
+    return { code: error.code, message: error.message };
+  });
+}
+

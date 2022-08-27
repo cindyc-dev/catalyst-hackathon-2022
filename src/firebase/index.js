@@ -17,14 +17,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const Login = (method) => {
+export  const Login = async (method) => {
   switch (method) {
     case 'facebook':
-      FacebookLogin();
-      break;
+      return await FacebookLogin();
     case 'twitter':
-      TwitterLogin();
-      break;
+      return await TwitterLogin();
     default:
       return;
   }
@@ -33,11 +31,9 @@ export const Login = (method) => {
 export const Link = (method) => {
   switch (method) {
     case 'facebook':
-      LinkToFacebook();
-      break;
+      return LinkToFacebook();
     case 'twitter':
-      LinkToTwitter();
-      break;
+      return LinkToTwitter();
     default:
       return;
   }
