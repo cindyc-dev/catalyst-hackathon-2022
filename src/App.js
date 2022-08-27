@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import TopBar from "./components/TopBar";
 import ImageUpload from "./components/ImageUpload";
@@ -43,6 +43,15 @@ TabPanel.propTypes = {
 };
 
 function App() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const uid = user.uid;
+            console.log(uid);
+        } else {
+            console.log("Not logged in");
+        }
+    });
     return (
         <Router>
             <Routes>
@@ -63,15 +72,7 @@ const HomePage = () => {
     const [tabVal, setTabVal] = useState(0);
     const [tabDisable, setTabDisable] = useState(true);
     const [images, setImages] = useState([]);
-    const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      console.log(uid)
-    } else {
-      console.log("Not logged in")
-    }
-  });
+
     return (
         <>
             <div className="App">
