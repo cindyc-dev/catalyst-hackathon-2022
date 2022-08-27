@@ -3,6 +3,9 @@ import { getAuth, linkWithPopup, FacebookAuthProvider, TwitterAuthProvider } fro
 const facebookProvider = new FacebookAuthProvider();
 const twitterProvider = new TwitterAuthProvider();
 
+facebookProvider.addScope('pages_manage_posts');
+facebookProvider.addScope('pages_read_engagement');
+
 export const linkToFacebook = () => {
   const auth = getAuth();
   linkWithPopup(auth.currentUser, facebookProvider).then((result) => {

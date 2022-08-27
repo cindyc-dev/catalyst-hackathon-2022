@@ -2,7 +2,8 @@ import { getAuth, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 
 const provider = new FacebookAuthProvider();
 
-provider.addScope('user_birthday');
+provider.addScope('pages_manage_posts');
+provider.addScope('pages_read_engagement');
 
 export const FacebookLogin = () => {
   const auth = getAuth();
