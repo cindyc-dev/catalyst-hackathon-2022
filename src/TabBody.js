@@ -21,7 +21,6 @@ const TabBody = ({ images }) => {
           <Button>click to post</Button>
         </Grid>
         </Grid>
-       
       </Grid>
     </Box>
   )
