@@ -66,7 +66,7 @@ function App() {
                 <TabBody images={images} />
             </TabPanel>
             <TabPanel value={tabVal} index={2}>
-                Item Three
+                <TabBody images={images} />
             </TabPanel>
         </div>
     );
