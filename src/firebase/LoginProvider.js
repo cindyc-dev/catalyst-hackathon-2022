@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, FacebookAuthProvider, TwitterAuthProvider, signOut } from "firebase/auth";
 
 const facebookProvider = new FacebookAuthProvider();
 const twitterProvider = new TwitterAuthProvider();
@@ -55,4 +55,14 @@ export const TwitterLogin = async () => {
       const credential = TwitterAuthProvider.credentialFromError(error);
       return { error: true, errorCode, errorMessage, email, credential };
     });
+}
+
+export const SignOut = async () => {
+  const auth = getAuth();
+  return await signOut(auth).then(() => {
+    return { code: 200 };
+  }).catch((error) => {
+    // An error happened.
+    return { code: error.code, message: error.message };
+  });
 }
