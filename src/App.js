@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import TopBar from "./components/TopBar";
 import ImageUpload from "./components/ImageUpload";
 import TabBody from "./TabBody";
+import LoginPage from "./LoginPage";
+import SignupPage from "./SignupPage";
 
 
 function TabPanel(props) {
@@ -36,40 +39,46 @@ TabPanel.propTypes = {
 };
 
 function App() {
-    const [tabVal, setTabVal] = useState(0);
-    const [tabDisable, setTabDisable] = useState(true);
-    const [images, setImages] = useState([]);
-    
-  
     return (
-        // <Button
-        //           variant="contained"
-        //           onClick={() => Login("facebook")}
-        //         >
-        //           Login
-        //         </Button>
-        <div className="App">
-            <TopBar
-                tabVal={tabVal}
-                setTabVal={setTabVal}
-                tabDisable={tabDisable}
-            />
-
-            <TabPanel value={tabVal} index={0}>
-                <ImageUpload 
-                  images={images}
-                  setImages={setImages}
-                  setTabDisable={setTabDisable}
-                />
-            </TabPanel>
-            <TabPanel value={tabVal} index={1}>
-                <TabBody images={images} />
-            </TabPanel>
-            <TabPanel value={tabVal} index={2}>
-                Item Three
-            </TabPanel>
-        </div>
+      <Router>
+        <Routes>
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<HomePage />} />
+        </Routes>
+      </Router>
     );
+}
+
+const HomePage = () => {
+  const [tabVal, setTabVal] = useState(0);
+  const [tabDisable, setTabDisable] = useState(true);
+  const [images, setImages] = useState([]);
+  return (
+    <>
+      <div className="App" >
+        <TopBar
+            tabVal={tabVal}
+            setTabVal={setTabVal}
+            tabDisable={tabDisable}
+          />
+
+          <TabPanel value={tabVal} index={0}>
+            <ImageUpload 
+              images={images}
+              setImages={setImages}
+              setTabDisable={setTabDisable}
+            />
+          </TabPanel>
+          <TabPanel value={tabVal} index={1}>
+              <TabBody images={images} />
+          </TabPanel>
+          <TabPanel value={tabVal} index={2}>
+              Item Three
+          </TabPanel>
+      </div>
+    </>
+  )
 }
 
 export default App;
