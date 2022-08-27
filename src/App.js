@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import TopBar from './components/TopBar';
 import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { FacebookLogin } from './firebase/LoginProvider';
+import { FacebookLogin } from './firebase/init';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
