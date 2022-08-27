@@ -20,11 +20,9 @@ const app = initializeApp(firebaseConfig);
 export const Login = (method) => {
   switch (method) {
     case 'facebook':
-      FacebookLogin();
-      break;
+      return FacebookLogin();
     case 'twitter':
-      TwitterLogin();
-      break;
+      return TwitterLogin();
     default:
       return;
   }
@@ -33,11 +31,9 @@ export const Login = (method) => {
 export const Link = (method) => {
   switch (method) {
     case 'facebook':
-      LinkToFacebook();
-      break;
+      return LinkToFacebook();
     case 'twitter':
-      LinkToTwitter();
-      break;
+      return LinkToTwitter();
     default:
       return;
   }
