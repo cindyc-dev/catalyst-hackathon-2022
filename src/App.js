@@ -40,6 +40,35 @@ TabPanel.propTypes = {
 
 function App() {
     return (
+<<<<<<< HEAD
+        // <Button
+        //           variant="contained"
+        //           onClick={() => Login("facebook")}
+        //         >
+        //           Login
+        //         </Button>
+        <div className="App">
+            <TopBar
+                tabVal={tabVal}
+                setTabVal={setTabVal}
+                tabDisable={tabDisable}
+            />
+
+            <TabPanel value={tabVal} index={0}>
+                <ImageUpload 
+                  images={images}
+                  setImages={setImages}
+                  setTabDisable={setTabDisable}
+                />
+            </TabPanel>
+            <TabPanel value={tabVal} index={1}>
+                <TabBody images={images} />
+            </TabPanel>
+            <TabPanel value={tabVal} index={2}>
+                <TabBody images={images} />
+            </TabPanel>
+        </div>
+=======
       <Router>
         <Routes>
           <Route path="/signup" element={<SignupPage />} />
@@ -47,6 +76,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         </Routes>
       </Router>
+>>>>>>> 57ad73e239dde6ec75e985c82ba5fb23476906d5
     );
 }
 
