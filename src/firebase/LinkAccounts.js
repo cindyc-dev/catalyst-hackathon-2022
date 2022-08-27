@@ -1,5 +1,5 @@
 import { FacebookAuthProvider, TwitterAuthProvider } from "firebase/auth";
-import app from "./init";
+import app from ".";
 
 const facebookProvider = new FacebookAuthProvider();
 const twitterProvider = new TwitterAuthProvider();

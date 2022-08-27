@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import TopBar from './components/TopBar';
 import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { FacebookLogin } from './firebase/init';
+import { Login } from './firebase';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,7 +62,7 @@ function App() {
       <TabPanel value={tabVal} index={0}>
         <Button
           variant="contained"
-          onClick={FacebookLogin}
+          onClick={() => Login("facebook")}
         >
           Login
         </Button>
