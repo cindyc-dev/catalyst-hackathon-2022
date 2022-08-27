@@ -27,7 +27,7 @@ export default function LoginPage() {
                             <p>
                                 <Button onClick={() => Login('facebook')}>Login with Facebook</Button>
                                 <Button onClick={() => Login('twitter')}>Login with Twitter</Button>
-                                <button id="sub_btn" type="submit">Login</button>
+                                <Button variant="contained" id="sub_btn" type="submit">Login</Button>
                             </p>
                         </form>
                         <footer>
