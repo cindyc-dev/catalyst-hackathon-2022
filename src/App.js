@@ -1,6 +1,5 @@
 import './App.css';
-
-import React from 'react';
+import React, { useState } from 'react';
 import ImageUploading from 'react-images-uploading';
 import PropTypes from 'prop-types';
 
@@ -37,22 +36,25 @@ TabPanel.propTypes = {
 
 
 function App() {
-  const [tabVal, setTabVal] = React.useState(0);
+  const [tabVal, setTabVal] = useState(0);
+  const [tabDisable, setTabDisable] = useState(true);
 
-  const [images, setImages] = React.useState([]);
+  const [images, setImages] = useState([]);
   const maxNumber = 69;
 
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
+    if (imageList.length >= 1) {
+      setTabDisable(false);
+    }
   };
   
 
   return (
     <div className="App">
-      <TopBar tabVal={tabVal} setTabVal={setTabVal} />
-
+      <TopBar tabVal={tabVal} setTabVal={setTabVal} tabDisable={tabDisable} />
       <TabPanel value={tabVal} index={0}>
         <ImageUploading
           multiple
