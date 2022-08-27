@@ -113,18 +113,18 @@ function App() {
               </Box>}
               <Box height="80vh"
                 display="flex" 
-                // style={{
-                //   border: imageList.length === 0 || isDragging ? "0.3em dashed grey" : null }}
+                style={{
+                  border: imageList.length === 0 || isDragging ? "0.3em dashed grey" : null }}
                 {...dragProps}
               >
-                {/* <Button
+                <Button
                   variant="contained"
                   startIcon={<FileUploadIcon />}
                   onClick={onImageUpload}
                 >
                   Upload
-                </Button> */}
-                {/* {imageList.length === 0 &&
+                </Button>
+                {imageList.length === 0 &&
                   <Box m="auto">
                     <IconButton
                       sx={{ color: 'white' }}
@@ -135,7 +135,7 @@ function App() {
                     </IconButton>
                     <Typography>Drag files here or <Link onClick={onImageUpload}>browse</Link></Typography>
                   </Box>
-                } */}
+                }
                 &nbsp;
 
                 
