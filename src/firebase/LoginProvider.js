@@ -36,16 +36,16 @@ export const TwitterLogin = () => {
   const auth = getAuth();
   signInWithPopup(auth, twitterProvider)
     .then((result) => {
+      // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+      // You can use these server side with your app's credentials to access the Twitter API.
+      const credential = TwitterAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const secret = credential.secret;
+
       // The signed-in user info.
       const user = result.user;
-
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      const credential = TwitterAuthProvider.credentialFromResult(result);
-      const accessToken = credential.accessToken;
-
-      return { error: false, user, accessToken };
-    })
-    .catch((error) => {
+      return { error: false, user, token, secret };
+    }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -53,7 +53,6 @@ export const TwitterLogin = () => {
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = TwitterAuthProvider.credentialFromError(error);
-
       return { error: true, errorCode, errorMessage, email, credential };
     });
 }
