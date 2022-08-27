@@ -33,7 +33,9 @@ export const publishPost = (pageId, accessToken, content) => {
     message += "&photo=" + content.photo;
   }
 
-  axios.post(`https://graph.facebook.com/${pageId}/feed?${message}&access_token=${accessToken}`)
+  axios.post(`https://graph.facebook.com/${pageId}/feed?${message}&access_token=${accessToken}`, {
+    object_attachment: content.photo
+  })
     .then(res => res.data)
     .catch(err => err);
 }
