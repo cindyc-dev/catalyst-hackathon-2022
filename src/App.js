@@ -1,11 +1,14 @@
 import './App.css';
 import React, { useState } from 'react';
+
 import ImageUploading from 'react-images-uploading';
 import PropTypes from 'prop-types';
-
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TopBar from './components/TopBar';
+import { Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { FacebookLogin } from './firebase/LoginProvider';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -34,7 +37,6 @@ TabPanel.propTypes = {
 };
 
 
-
 function App() {
   const [tabVal, setTabVal] = useState(0);
   const [tabDisable, setTabDisable] = useState(true);
@@ -48,6 +50,8 @@ function App() {
     setImages(imageList);
     if (imageList.length >= 1) {
       setTabDisable(false);
+    } else {
+      setTabDisable(true);
     }
   };
   
@@ -56,6 +60,12 @@ function App() {
     <div className="App">
       <TopBar tabVal={tabVal} setTabVal={setTabVal} tabDisable={tabDisable} />
       <TabPanel value={tabVal} index={0}>
+        <Button
+          variant="contained"
+          onClick={FacebookLogin}
+        >
+          Login
+        </Button>
         <ImageUploading
           multiple
           value={images}
@@ -74,15 +84,26 @@ function App() {
           }) => (
             // write your building UI
             <div className="upload__image-wrapper">
-              <button
+              <Button
+                variant="contained"
                 style={isDragging ? { color: 'red' } : undefined}
                 onClick={onImageUpload}
                 {...dragProps}
               >
                 Click or Drop here
-              </button>
+              </Button>
+
               &nbsp;
-              <button onClick={onImageRemoveAll}>Remove all images</button>
+
+              <Button
+                variant="contained"
+                color="error"
+                startIcon={<DeleteIcon />}
+                onClick={onImageRemoveAll}
+              >
+                Remove all images
+              </Button>
+
               {imageList.map((image, index) => (
                 <div key={index} className="image-item">
                   <img src={image['data_url']} alt="" width="100" />

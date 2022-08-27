@@ -10,7 +10,7 @@ function a11yProps(index) {
   };
 }
 
-function TopBar({tabVal, setTabVal, tabDisable}) {
+function TopBar({ tabVal, setTabVal, tabDisable }) {
   return (
     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
       <Tabs value={tabVal} onChange={(e, newVal) => setTabVal(newVal)} aria-label="basic tabs example">
