@@ -16,7 +16,6 @@ export const FacebookLogin = async () => {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const accessToken = credential.accessToken;
-      console.log(`accessToken: ${accessToken} ${{ error: false, user, accessToken }}`)
       return { error: false, user, accessToken };
     })
     .catch((error) => {
@@ -66,3 +65,4 @@ export const SignOut = async () => {
     return { code: error.code, message: error.message };
   });
 }
+

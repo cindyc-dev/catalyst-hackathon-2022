@@ -1,4 +1,6 @@
 import "./App.css";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Typography from "@mui/material/Typography";
@@ -52,15 +54,24 @@ function App() {
     );
 }
 
-async function LoginTo(method){
-  let data = await Login(method)
-  console.log(data)
+async function LoginTo(method) {
+    let data = await Login(method);
+    localStorage.setItem(method, data.accessToken);
 }
 
 const HomePage = () => {
     const [tabVal, setTabVal] = useState(0);
     const [tabDisable, setTabDisable] = useState(true);
     const [images, setImages] = useState([]);
+    const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      console.log(uid)
+    } else {
+      console.log("Not logged in")
+    }
+  });
     return (
         <>
             <div className="App">
@@ -78,13 +89,17 @@ const HomePage = () => {
                     />
                 </TabPanel>
                 <TabPanel value={tabVal} index={1}>
-                    <LoginButton handleClick={() => 
-                      {LoginTo("facebook")}} /> 
-                    
-                    <TabBody images={images} />
+                    {localStorage.getItem("facebook") ? (
+                        <TabBody images={images} />
+                    ) : (
+                        <LoginButton
+                            handleClick={() => {
+                                LoginTo("facebook");
+                            }}
+                        />
+                    )}
                 </TabPanel>
                 <TabPanel value={tabVal} index={2}>
-                
                     <TabBody images={images} />
                 </TabPanel>
             </div>
