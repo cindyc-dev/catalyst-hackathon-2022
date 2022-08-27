@@ -5,10 +5,14 @@ import ImageUploading from 'react-images-uploading';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 import TopBar from './components/TopBar';
-import { Button } from '@mui/material';
+import { Button, ImageListItemBar, Link } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Login } from './firebase';
+import IconButton from '@mui/material/IconButton';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { Grid } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
@@ -48,7 +52,6 @@ TabPanel.propTypes = {
 function App() {
   const [tabVal, setTabVal] = useState(0);
   const [tabDisable, setTabDisable] = useState(true);
-
   const [images, setImages] = useState([]);
   const maxNumber = 69;
 
