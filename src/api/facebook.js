@@ -37,3 +37,11 @@ export const publishPost = (pageId, accessToken, content) => {
     .then(res => res.data)
     .catch(err => err);
 }
+
+export const uploadPhoto = (albumId, accessToken, photo) => {
+  axios.post(`https://graph.facebook.com/${albumId}/photos&access_token=${accessToken}`, {
+    url: photo
+  })
+    .then(res => res.data)
+    .catch(err => err);
+}
