@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 
 import TopBar from "./components/TopBar";
 import ImageUpload from "./components/ImageUpload";
+import TabBody from "./TabBody";
 
 
 function TabPanel(props) {
@@ -62,7 +63,7 @@ function App() {
                 />
             </TabPanel>
             <TabPanel value={tabVal} index={1}>
-                Item Two
+                <TabBody images={images} />
             </TabPanel>
             <TabPanel value={tabVal} index={2}>
                 Item Three
