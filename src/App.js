@@ -52,6 +52,11 @@ function App() {
     );
 }
 
+async function LoginTo(method){
+  let data = await Login(method)
+  console.log(data)
+}
+
 const HomePage = () => {
     const [tabVal, setTabVal] = useState(0);
     const [tabDisable, setTabDisable] = useState(true);
@@ -73,7 +78,8 @@ const HomePage = () => {
                     />
                 </TabPanel>
                 <TabPanel value={tabVal} index={1}>
-                    <LoginButton handleClick={() => Login("facebook")} /> 
+                    <LoginButton handleClick={() => 
+                      {LoginTo("facebook")}} /> 
                     
                     <TabBody images={images} />
                 </TabPanel>
