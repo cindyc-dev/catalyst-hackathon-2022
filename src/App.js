@@ -76,9 +76,48 @@ const HomePage = ({ user, setUser }) => {
     const [tabDisable, setTabDisable] = useState(true);
     const [images, setImages] = useState([]);
 
+    // let getBase64 = (file, cb) => {
+    //     let reader = new FileReader();
+    //     reader.readAsDataURL(file);
+    //     reader.onload = function () {
+    //         cb(reader.result)
+    //     };
+    //     reader.onerror = function (error) {
+    //         console.log('Error: ', error);
+    //     };
+    // }
+
+    // useEffect(() => {
+    //     console.log('In use effect: ', images);
+    //     // files.forEach(file => URL.revokeObjectURL(file.preview));
+
+    //     let encodedImage = '';
+    //     if (images.length){
+    //         getBase64(images[0]['data_url'], (result) => {
+    //             encodedImage = result;
+    //             fetch("http://127.0.0.1:3001/", {
+    //                 method: 'POST',
+    //                 mode: 'cors',
+    //                 body: encodedImage,
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                 }
+    //             })
+    //                 .then(res => res.json())
+    //                 .then(res => {
+    //                     // setCaption(res);
+    //                     console.log(res)
+    //                 });
+    //         });
+    //     }
+        
+    // }, [images]);
+
     if (!user) {
         return <Navigate to="/login" />
     }
+
+    
 
     return (
         <>
