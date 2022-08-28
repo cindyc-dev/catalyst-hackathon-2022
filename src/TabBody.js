@@ -4,7 +4,7 @@ import { Box, Grid, TextField, Button } from "@mui/material";
 
 const TabBody = ({ images }) => {
   return (
-    <Box width={500} mx={"auto"}>
+    <Box width={1000} mx={"auto"}>
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <ImageCarousel images={images} />

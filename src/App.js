@@ -15,6 +15,8 @@ import SignupPage from "./SignupPage";
 
 import { Login } from "./firebase";
 import LoginButton from "./components/LoginButton";
+import FirebaseAuthContext from "./FirebaseAuthContext";
+import ProtectedRoute from "./ProtectedRoute";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -53,13 +55,15 @@ function App() {
         }
     });
     return (
-        <Router>
-            <Routes>
-                <Route path="/signup" element={<SignupPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/" element={<HomePage />} />
-            </Routes>
-        </Router>
+        <FirebaseAuthContext>
+            <Router>
+                <Routes>
+                    <Route path="/signup" element={<SignupPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/" element={<ProtectedRoute element={<HomePage />} />} />
+                </Routes>
+            </Router>
+        </FirebaseAuthContext>
     );
 }
 

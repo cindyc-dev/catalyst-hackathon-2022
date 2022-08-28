@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { FacebookLogin, TwitterLogin } from "./LoginProvider";
 import { LinkToFacebook, LinkToTwitter } from "./LinkAccounts";
+import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -38,5 +39,7 @@ export const Link = (method) => {
       return;
   }
 }
+
+export const auth = getAuth();
 
 export default app;
