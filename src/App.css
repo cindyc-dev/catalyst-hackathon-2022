@@ -45,7 +45,17 @@ body, html, #root, .App {
 }
 
 
-.signup, .login {
+.login {
+  background-image: url("bgLogIn.png");
+  height: 100%;
+  background-position: center;
+  background-repeat:no-repeat;
+  background-size: cover;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.signup {
   background-image: url("bgSignUp.png");
   height: 100%;
   background-position: center;
@@ -65,21 +75,41 @@ h2 {
   color: #1A1A1A;
 }
 
+h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 19px;
+  margin-top: 100px;
+
+  color: #1A1A1A;
+}
+
 input {
-  width: 100%;
+  width: 93%;
   height: 30px;
   border-radius: 20px;
   border-width: 1.5px;
   border-color: #018ABD;
   margin-top: 5px;
+  padding-left: 20px;
 }
 
 .loginContent {
   padding: 0 200px;
+  text-align: center;
 }
 
-.username, .password {
-  margin-right: 250px;
+.loginContent p {
+  text-align: left;
+}
+
+.signupContent p {
+  text-align: left;
+}
+
+.signupContent {
+  margin-left: 100px;
 }
 
 .buttonfront {
@@ -92,4 +122,24 @@ input {
   margin-top: 50px;
 }
 
+.buttonGroup {
+  margin-top: 30px;
+  text-align: center;
+}
 
+.buttonlogin {
+  width: 100%;
+}
+
+.buttonsignup {
+  width: 100%;
+}
+
+.linktoSignUp {
+  margin-left: 52px;
+}
+
+
+.linktoLogin {
+  margin-left: 87px;
+}

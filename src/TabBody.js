@@ -14,7 +14,7 @@ const TabBody = ({ images }) => {
             label="Description"
             multiline
             rows={12}
-            sx={{ width: "70%" }}
+            sx={{ width: "100%" }}
           /> 
           </Grid>
           <Grid style={{height: "100%"}}>
