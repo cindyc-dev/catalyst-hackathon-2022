@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 import TopBar from "./components/TopBar";
 import ImageUpload from "./components/ImageUpload";
-import TabBody from "./TabBody";
+import TabBody from "./components/TabBody";
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
 
