@@ -1,6 +1,6 @@
 #tabBody {
   width: 80vw;
-  margin: 75px auto;
+  margin: 35px auto;
 }
 
 #tabBody h2 {
@@ -16,7 +16,7 @@
   border: 1px dashed black;
   border-radius: 20px;
   padding: 30px;
-  height: 70vh;
+  height: 50vh;
   width: 40vw;
 }
 
