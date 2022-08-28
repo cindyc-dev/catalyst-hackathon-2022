@@ -5,15 +5,7 @@ import { initializeApp } from "firebase/app";
 import { FacebookLogin, TwitterLogin } from "./LoginProvider";
 import { LinkToFacebook, LinkToTwitter } from "./LinkAccounts";
 import { getAuth } from "firebase/auth";
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_DOMAIN,
-  projectId: "catalyst-hackathon-2022",
-  storageBucket: "catalyst-hackathon-2022.appspot.com",
-  messagingSenderId: process.env.REACT_APP_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID
-};
+import { firebaseConfig } from "../firebase.config";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
