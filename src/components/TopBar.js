@@ -61,7 +61,7 @@ function TopBar({ tabVal, setTabVal, tabDisable, setUser }) {
             <Box>
                 <Tooltip title="Open setting" index={4}>
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                        <Avatar alt="Hello" src="/static/images/avatar/2.jpg" />
+                        <Avatar alt="Avatar" src="user.png" />
                     </IconButton>
                 </Tooltip>
                 <Menu
