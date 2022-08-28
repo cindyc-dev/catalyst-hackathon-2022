@@ -1,17 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { Login } from './firebase';
 import { useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LoginPage() {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const [alertSev, setAlertSev] = useState("")
+    const [alertMes, setAlertMes] = useState("")
+
     const navigate = useNavigate();
     const handleSubmit = (e) => {
+        
         e.preventDefault();
-
-        navigate("/");
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user)
+            setAlertSev("success")
+            setAlertMes("You have successfully Signed Up!")
+            navigate("/");
+        })
+        .catch((error) => {
+            console.error(error)
+            setEmail("")
+            setPassword("")
+            setAlertSev("error")
+            setAlertMes(`${error.code} - ${error.message}`)
+        });
+        
     }
 
     return (
@@ -23,14 +45,14 @@ export default function LoginPage() {
                         <h2>Welcome Back!</h2>
                         <form onSubmit={handleSubmit} >
                             <p>
-                                <label className="username">Username:</label><br/>
-                                <input type="text" name="username" required />
+                                <label className="email">Email:</label><br/>
+                                <input type="text" name="email" onChange={(e)=>{setEmail(e.currentTarget.value)}} value={email} required />
                             </p>
                             <p>
                                 <label className="password">Password:</label>
                                 {/* <Link to="/forget-password"><label className="right-label">Forget password?</label></Link> */}
                                 <br/>
-                                <input type="password" name="password" required />
+                                <input type="password" name="password" onChange={(e)=>{setPassword(e.currentTarget.value)}} value={password} required />
                             </p>
                             <div className='buttonGroup'>
                                 <Button className="buttonlogin" variant="contained" id="/" type="submit">Login</Button>
