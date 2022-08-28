@@ -5,6 +5,7 @@ const twitterProvider = new TwitterAuthProvider();
 
 facebookProvider.addScope('pages_manage_posts');
 facebookProvider.addScope('pages_read_engagement');
+facebookProvider.addScope('pages_show_list');
 
 export const FacebookLogin = async () => {
   const auth = getAuth();
