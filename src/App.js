@@ -60,7 +60,7 @@ function App() {
                 <Routes>
                     <Route path="/signup" element={<SignupPage />} />
                     <Route path="/login" element={<LoginPage />} />
-                    <Route path="/" element={<ProtectedRoute element={<HomePage />} />} />
+                    <Route path="/" element={<HomePage />} />
                 </Routes>
             </Router>
         </FirebaseAuthContext>

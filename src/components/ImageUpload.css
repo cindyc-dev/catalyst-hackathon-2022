@@ -1,0 +1,30 @@
+#upload-tab {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 1rem;
+  margin: 1rem;
+  gap: 100px;
+  height: 80vh;
+}
+
+.btn-group {
+  height: 100%;
+}
+
+.btn-group img {
+  height: 300px;
+}
+
+.image-container {
+  height: 100%;
+  width: 100%;
+  border: 1px dashed black;
+  border-radius: 20px;
+}
+
+.image-gallery {
+  margin: 30px;
+}
+
+

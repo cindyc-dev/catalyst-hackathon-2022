@@ -46,7 +46,7 @@ body, html, #root, .App {
 
 
 .login {
-  background-image: url("bgLogIn.png");
+  background-image: url("../public/bgLogIn.png");
   height: 100%;
   background-position: center;
   background-repeat:no-repeat;
@@ -56,7 +56,7 @@ body, html, #root, .App {
 }
 
 .signup {
-  background-image: url("bgSignUp.png");
+  background-image: url("../public/bgSignUp.png");
   height: 100%;
   background-position: center;
   background-repeat:no-repeat;
