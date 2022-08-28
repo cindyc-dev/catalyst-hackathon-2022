@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import Masonry from "./Masonry";
 import ImageUploading from "react-images-uploading";
 import Box from "@mui/material/Box";
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import "./ImageUpload.css";
 
 const maxNumber = 69;
@@ -34,14 +35,6 @@ function ImageUpload({ images, setImages, setTabDisable }) {
                 dragProps,
             }) => (
                 <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "flex-end",
-                        p: 1,
-                        m: 1,
-                        gap: 1,
-                    }}
                     id="upload-tab"
                 >
                     <div className="btn-group">
@@ -54,12 +47,18 @@ function ImageUpload({ images, setImages, setTabDisable }) {
                             <p>Remove All</p>
                         </Button>
                     </div>
-                    <Box display="flex" {...dragProps} className="image-container">
-                        <div className="image-gallery">
-                            <Masonry
-                                imageList={imageList}
-                                onImageRemove={onImageRemove}
-                            />
+                    <Box className="image-container">
+                        <div className="image-gallery" {...dragProps}>
+                            {imageList.length > 0 ? (
+                                <Masonry
+                                    imageList={imageList}
+                                    onImageRemove={onImageRemove}
+                                />
+                            ) : (
+                                <Button onClick={onImageUpload} id="no-image">
+                                    <FileDownloadOutlinedIcon id="upload-icon" />Click or Drag to Upload
+                                </Button>
+                            )}
                         </div>
                     </Box>
                 </Box>

@@ -12,8 +12,12 @@
   height: 100%;
 }
 
+.btn-group button {
+  height: 50%;
+}
+
 .btn-group img {
-  height: 300px;
+  height: 90%;
 }
 
 .image-container {
@@ -25,6 +29,18 @@
 
 .image-gallery {
   margin: 30px;
+  height: 100%;
+  position: relative;
 }
 
+#upload-icon {
+  display: block;
+}
+
+#no-image {
+  position: absolute;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
 

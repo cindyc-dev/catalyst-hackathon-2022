@@ -42,6 +42,7 @@
 
 body, html, #root, .App {
   height: 100%;
+  background-color: #DDE8F0;
 }
 
 
