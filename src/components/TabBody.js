@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import ImageCarousel from "./ImageCarousel";
-import { Box, Grid, TextField, Button } from "@mui/material";
+import { Box, TextField, Button } from "@mui/material";
 import "./TabBody.css";
 import ChipsArray from "./ChipsArray";
-import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const options = [
   'Personal',
@@ -51,7 +49,7 @@ const descrip = {
 const ITEM_HEIGHT = 48;
 
 const TabBody = ({ images }) => {
-    const [description, setDescription] = useState("0");
+    const [description, setDescription] = useState("");
     const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
