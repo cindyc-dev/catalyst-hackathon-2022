@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+<h1 align="center">Media In One</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Demo
+![](demo.gif)
 
-## Available Scripts
+## **💭 Inspiration** 
+Nowadays, there are so many social media platforms available. Don't you hate it when you have to go to every social media platform when you want to post on several social media platforms?
 
-In the project directory, you can run:
+Media In One is an awesome solution for posting social media posts on different platforms or when you need help writing descriptions and captions!
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## **✨ What it does**
+Media In One is a website that helps you post on social media without having to hop onto different social media platforms! Our website also includes a caption generator that gives you a template caption relevant to your posts. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+→  Login to all of your social media accounts and access them all on 1 platform
 
-### `npm test`
+→  Post on all of your different social media accounts with the push of a button
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+→  Generate captions for your images to make your content more accessible
 
-### `npm run build`
+→  Not sure what to write for your descriptions? Use one of the several templates to help you out
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+→  Use the suggested tags to make your content optimised for SEO
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## **🛠 How we built it**
+UI/UX: Figma
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Frontend: HTML, CSS, React
 
-### `npm run eject`
+Backend: Firebase
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## **🎯 Challenges we ran into**
+→  Failure in model deployment. We initially planned on hosting an ML model that would be able to generate captions for us but this unfortunately didn’t happen because of a Heroku slug limit (ie. the ML model was too big to be deployed on Heroku); we also tried other deployment methods like GCP but to no avail.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+→  Time and scope. We didn’t have enough time to finish a large project like this and we probably shouldn’t have scoped out such a large project in the first place.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+→  We were also unable to implement the social media APIs as most of them required us to verify our app which could take up to 30 days. However, we did write quite a big chunk of code that would work if we were verified :,
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## **💪 Accomplishments that we're proud of**
+→ We succeed in authenticating third party API.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+→ We were able to make it through the hackathon without running into too many horrifying merge conflicts.
 
-### Code Splitting
+→ Implementing a fully-functional authentication system.
+Succeed in deploying our website.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## **📖 What we learned**
+→ How to use Firebase and React
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+→ Authenticating third party API
 
-### Making a Progressive Web App
+→ Teamwork makes the dream work 🌈
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## **⛳️ What's next for Media In One?**
+→ Add a translate caption feature to compromise other users from different regions as target audience. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+→ Add more social media platforms such as Pinterest, Instagram and more. 
 
-### Deployment
+→ Upload and share not only pictures but also videos!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+→ Photo editing: cropping, applying filters and more.
 
-### `npm run build` fails to minify
+→ Add tags on pictures to tag other users. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+→ Built-in scheduling facilities for scheduling posts and planning. 
