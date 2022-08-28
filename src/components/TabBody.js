@@ -81,6 +81,17 @@ const TabBody = ({ images }) => {
                     />
                     <Button
                       id="basic-button"
+                      onClick={() => {setDescription(e => e + `
+/////////////////////////////////////////////////////////////////////////////////////////
+Image Description
+
+White background with all-caps black text that reads 'Media In One' and purple text the reads 'Making media everywhere' at the left with GitHub, React, JavaScript, CSS and HTML Logos below it. An illustration of a person in a blue and purple sweater typing on a computer on the bottom right corner.
+                      `)}}
+                    >
+                      Generate Image Description
+                    </Button>
+                    <Button
+                      id="basic-button"
                       aria-controls={open ? 'basic-menu' : undefined}
                       aria-haspopup="true"
                       aria-expanded={open ? 'true' : undefined}

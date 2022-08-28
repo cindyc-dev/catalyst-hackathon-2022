@@ -9,11 +9,8 @@ const ListItem = styled('li')(({ theme }) => ({
 
 export default function ChipsArray() {
   const [chipData, setChipData] = React.useState([
-    { key: 0, label: 'Angular' },
-    { key: 1, label: 'jQuery' },
-    { key: 2, label: 'Polymer' },
-    { key: 3, label: 'React' },
-    { key: 4, label: 'Vue.js' },
+    { key: 0, label: 'Computer Science' },
+    { key: 1, label: 'Hackathon' },
   ]);
 
   const handleDelete = (chipToDelete) => () => {
