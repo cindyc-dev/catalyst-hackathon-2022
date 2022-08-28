@@ -1,11 +1,11 @@
 import "./App.css";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import TopBar from "./components/TopBar";
 import ImageUpload from "./components/ImageUpload";
@@ -16,7 +16,6 @@ import SignupPage from "./SignupPage";
 import { Login } from "./firebase";
 import LoginButton from "./components/LoginButton";
 import FirebaseAuthContext from "./FirebaseAuthContext";
-import ProtectedRoute from "./ProtectedRoute";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -45,22 +44,22 @@ TabPanel.propTypes = {
 };
 
 function App() {
+    const [user, setUser] = useState(null)
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            const uid = user.uid;
-            console.log(uid);
-        } else {
-            console.log("Not logged in");
-        }
-    });
+
+    useEffect(() => {
+        const currentUser = auth.currentUser;
+        setUser(currentUser)
+        console.log(`currentUser: ${currentUser}`)
+    }, [auth.currentUser])
+
     return (
         <FirebaseAuthContext>
             <Router>
                 <Routes>
                     <Route path="/signup" element={<SignupPage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<LoginPage user={user} setUser={setUser} />} />
+                    <Route path="/" element={<HomePage user={user} setUser={setUser} />} />
                 </Routes>
             </Router>
         </FirebaseAuthContext>
@@ -72,20 +71,24 @@ async function LoginTo(method) {
     localStorage.setItem(method, data.accessToken);
 }
 
-const HomePage = () => {
+const HomePage = ({ user, setUser }) => {
     const [tabVal, setTabVal] = useState(0);
     const [tabDisable, setTabDisable] = useState(true);
     const [images, setImages] = useState([]);
+
+    if (!user) {
+        return <Navigate to="/login" />
+    }
 
     return (
         <>
             <div className="App">
                 <TopBar
+                    setUser={setUser}
                     tabVal={tabVal}
                     setTabVal={setTabVal}
                     tabDisable={tabDisable}
                 />
-
                 <TabPanel value={tabVal} index={0}>
                     <ImageUpload
                         images={images}
@@ -98,6 +101,7 @@ const HomePage = () => {
                         <TabBody images={images} />
                     ) : (
                         <LoginButton
+                            name={"facebook"}
                             handleClick={() => {
                                 LoginTo("facebook");
                             }}
@@ -105,7 +109,16 @@ const HomePage = () => {
                     )}
                 </TabPanel>
                 <TabPanel value={tabVal} index={2}>
-                    <TabBody images={images} />
+                    {localStorage.getItem("twitter") ? (
+                        <TabBody images={images} />
+                    ) : (
+                        <LoginButton
+                            name={"twitter"}
+                            handleClick={() => {
+                                LoginTo("twitter");
+                            }}
+                        />
+                    )}
                 </TabPanel>
             </div>
         </>
