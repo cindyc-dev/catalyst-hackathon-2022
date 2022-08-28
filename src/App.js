@@ -137,7 +137,7 @@ const HomePage = ({ user, setUser }) => {
                 </TabPanel>
                 <TabPanel value={tabVal} index={1}>
                     {localStorage.getItem("facebook") ? (
-                        <TabBody images={images} />
+                        <TabBody images={images} link={"https://www.facebook.com/"} />
                     ) : (
                         <LoginButton
                             name={"facebook"}
