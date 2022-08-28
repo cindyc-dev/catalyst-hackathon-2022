@@ -2,6 +2,7 @@ import React from "react";
 import ImageCarousel from "./ImageCarousel";
 import { Box, Grid, TextField, Button } from "@mui/material";
 import "./TabBody.css";
+import ChipsArray from "./ChipsArray";
 
 const TabBody = ({ images }) => {
   return (
@@ -20,11 +21,11 @@ const TabBody = ({ images }) => {
           <div>
             <h2>Hashtags</h2>
             <div className="hashtag-buttons">
-
+              <ChipsArray />
             </div>
           </div>
           <div id="post-btn-group">
-            <Button variant="contained">click to post</Button>
+            <Button variant="contained">post</Button>
           </div>
         </div>
       </div>
