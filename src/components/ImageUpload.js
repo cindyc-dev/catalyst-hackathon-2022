@@ -47,7 +47,7 @@ function ImageUpload({ images, setImages, setTabDisable }) {
                             <p>Remove All</p>
                         </Button>
                     </div>
-                    <Box className="image-container">
+                    <Box className="upload-image-container">
                         <div className="image-gallery" {...dragProps}>
                             {imageList.length > 0 ? (
                                 <Masonry
