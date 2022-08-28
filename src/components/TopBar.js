@@ -10,6 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { SignOut } from "../firebase/LoginProvider";
 
+
 function a11yProps(index) {
     return {
         id: `simple-tab-${index}`,
@@ -17,20 +18,23 @@ function a11yProps(index) {
     };
 }
 
-function handleSetting(setting) {
+function handleSetting(setting, setUser) {
     if (setting === "Logout") {
+        console.log("Logout")
         SignOut();
+        setUser(null)
     }
 }
 
 const settings = ["Logout"];
 
-function TopBar({ tabVal, setTabVal, tabDisable }) {
+function TopBar({ tabVal, setTabVal, tabDisable, setUser }) {
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
     const handleCloseUserMenu = () => {
+
         setAnchorElUser(null);
     };
     return (
@@ -77,7 +81,7 @@ function TopBar({ tabVal, setTabVal, tabDisable }) {
                     onClose={handleCloseUserMenu}
                 >
                     {settings.map((setting) => (
-                        <MenuItem key={setting} onClick={handleSetting(setting)}>
+                        <MenuItem key={setting} onClick={() => handleSetting(setting, setUser)}>
                             <Typography textAlign="center">
                                 {setting}
                             </Typography>
