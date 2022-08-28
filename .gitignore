@@ -24,3 +24,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+catalyst-hackathon-2022-firebase-adminsdk-peiuz-c90160cc99.json
+.firebase/
+firebase.config.js
